@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020E0E;
+  --color-secondary-bg: #05614B;
+  --color-foreground: #FFFFFF;
+  --color-primary: #01DE82;
+  --color-primary-foreground: #020E0E;
+  --color-primary-dark: #05614B;
+  --color-card: rgba(2, 14, 14, 0.7);
+  --color-card-foreground: #FFFFFF;
+  --color-border: rgba(1, 222, 130, 0.2);
+  --color-muted: rgba(5, 97, 75, 0.4);
+  --color-muted-foreground: #A0C4C4;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  * {
+    border-color: var(--color-border);
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--color-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-panel-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glass-panel-hover:hover {
+    border-color: rgba(1, 222, 130, 0.5);
+    box-shadow: 0 0 20px rgba(1, 222, 130, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(1, 222, 130, 0.5);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #01DE82, #05614B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-fluid-h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.1;
+  }
+
+  .text-fluid-p {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #05614B;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(1, 222, 130, 0.5);
+  }
+
+  /* Hide scrollbar for clean UI where needed */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
